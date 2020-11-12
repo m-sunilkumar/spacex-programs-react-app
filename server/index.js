@@ -1,32 +1,33 @@
-import path from "path";
-import fs from "fs";
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import Hello from './Hello.js';
 
-import React from "react";
-import express from "express";
-import ReactDOMServer from "react-dom/server";
+function handleRender(req, res) {
+  // Renders our Hello component into an HTML string
+  const html = ReactDOMServer.renderToString(<Hello />);
 
-import App from "../src/App";
+  // Load contents of index.html
+  fs.readFile('./index.html', 'utf8', function (err, data) {
+    if (err) throw err;
 
-const PORT = process.env.PORT || 3006;
-const app = express();
-app.get("/", (req, res) => {
-  const app = ReactDOMServer.renderToString(<App />);
+    // Inserts the rendered React HTML into our main div
+    const document = data.replace(/<div id="app"><\/div>/, `<div id="app">${html}</div>`);
 
-  const indexFile = path.resolve("./build/index.html");
-  fs.readFile(indexFile, "utf8", (err, data) => {
-    if (err) {
-      console.error("Something went wrong:", err);
-      return res.status(500).send("Oops, better luck next time!");
-    }
-
-    return res.send(
-      data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
-    );
+    // Sends the response back to the client
+    res.send(document);
   });
-});
+}
 
-app.use(express.static("./build"));
+const app = express();
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+// Serve built files with static files middleware
+app.use('/build', express.static(path.join(__dirname, 'build')));
+
+// Serve requests with our handleRender function
+app.get('*', handleRender);
+
+// Start server
+app.listen(3000);
