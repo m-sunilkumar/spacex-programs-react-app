@@ -1,52 +1,57 @@
 .main-container {
-    background: #f2f2f2;
-  }
-  
-  .main-container > p {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 0;
-    text-align: left;
-    padding-left: 1.5rem;
-  }
-  
+  background: #f2f2f2;
+}
+
+.main-container > p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+  padding-left: 1.5rem;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.left-filter-nav {
+  padding: 1rem;
+  width: 25%;
+}
+.right-launch-programs-container {
+  margin: 1.875rem auto;
+  padding: 0 1.25rem;
+  width: 70%;
+  display: grid;
+  /* Define Auto Row size if needed */
+  /* grid-auto-rows: 6.25rem; */
+  /*Define our columns */
+  grid-template-columns: repeat(auto-fit, minmax(12.75rem, 1fr));
+  grid-gap: 1rem;
+}
+.right-launch-programs-container > h2 {
+  text-align: center;
+}
+.card-container {
+  background: #fff;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+}
+@media only screen and (max-width: 700px) {
   .container {
-    display: flex;
-    margin: 0 auto;
-    max-width: 1440px;
+    flex-direction: column;
   }
-  
   .left-filter-nav {
-    padding: 1rem;
-    width: 25%;
+    width: auto;
   }
   .right-launch-programs-container {
-    margin: 1.875rem auto;
-    padding: 0 1.25rem;
-    width: 70%;
-    display: grid;
-    /* Define Auto Row size if needed */
-    /* grid-auto-rows: 6.25rem; */
-    /*Define our columns */
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+  .right-launch-programs-container {
     grid-template-columns: repeat(auto-fit, minmax(14.75rem, 1fr));
-    grid-gap: 1rem;
   }
-  .right-launch-programs-container > h2 {
-    text-align: center;
-  }
-  .card-container {
-    background: #fff;
-    border-radius: 0.3rem;
-    padding: 0.5rem;
-  }
-  @media only screen and (max-width: 700px) {
-    .container {
-      flex-direction: column;
-    }
-    .left-filter-nav {
-      width: auto;
-    }
-    .right-launch-programs-container {
-      width: 90%;
-    }
-  }
+}
