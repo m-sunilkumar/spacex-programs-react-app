@@ -21,4 +21,8 @@ module.exports = {
       },
     ],
   },
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> a63de46d214c713aeaae6d0ae806e9746001e4ce
