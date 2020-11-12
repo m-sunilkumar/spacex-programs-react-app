@@ -1,0 +1,23 @@
+.sub-filter-containers > p {
+    text-decoration: underline;
+  }
+  
+  .launch-year {
+    padding: 0.25rem 0.5rem;
+    background: #c5e099;
+    color: #fff;
+    margin: 0.5rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+  }
+  .filter-container-years {
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 0.5rem;
+  }
+  .filter-checks {
+    display: flex;
+    justify-content: space-between;
+  }
