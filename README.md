@@ -1,5 +1,27 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## server side rendering steps
+1) Add
+"scripts": {
+  "start": "webpack && babel-node server.js"
+},
+in script part of package.json;
+
+2) In the terminal run npm install and npm start
+3) Application should open in localhost: 3006 from the server side
+
+## client side rendering steps
+To run it from client side locally
+Follow below steps
+1) clone repo into local folder
+2) Go to the local folder where app is cloned(mkdir to project root folder)
+3)Run "npm install" in the terminal and run "npm start"
+4)Your local app should run on localhost:3000
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
