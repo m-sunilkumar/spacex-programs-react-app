@@ -11,20 +11,27 @@ const ProgramCard = (props) => {
       <div className="image-wrapper">
         <img alt="rocket-img" src={FalconlaunchImage} />
       </div>
-      <div className="program-mission-name">{programDetails.mission_name}</div>
+      <div className="program-mission-name">
+        {programDetails.mission_name || "Not Available"}
+      </div>
       <div className="program-details-container">
         <div className="program-details">
-          <span>Mission Ids:</span> {programDetails.mission_id}
+          <span>Mission Ids:</span>{" "}
+          {programDetails?.mission_id.length
+            ? programDetails.mission_id.map((id) => <span>{id}</span>)
+            : "Not Available"}
         </div>
         <div className="program-details">
           <span>Launch Year:</span>
-          {programDetails.launch_year}
+          {programDetails.launch_year || "Not Available"}
         </div>
         <div className="program-details">
-          <span>Successfull Launch:</span> {programDetails.launch_success}
+          <span>Successfull Launch:</span>{" "}
+          {String(programDetails.launch_success) || "Not Available"}
         </div>
         <div className="program-details">
-          <span>Successfull landing:</span> {programDetails.mission_id}
+          <span>Successfull landing:</span>{" "}
+          {String(programDetails.upcoming) || "not available"}
         </div>
       </div>
     </div>

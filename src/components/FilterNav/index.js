@@ -12,7 +12,7 @@ const FilterNavigation = (props) => {
   const [isSuccessfullLaunch, setIsSuccessfullLaunch] = useState("");
   const [isSuccessfullLanding, setIsSuccessfullLanding] = useState("");
   const history = useHistory();
-  console.log("history", history);
+
   const launchYears = [
     2006,
     2007,
@@ -87,6 +87,7 @@ const FilterNavigation = (props) => {
         <div className="filter-checks">
           {launchStatus.map((item) => (
             <div
+              key={item}
               className="launch-year"
               style={{
                 background: isSuccessfullLaunch === item ? "#7cbb32" : "",
@@ -104,6 +105,7 @@ const FilterNavigation = (props) => {
           {" "}
           {landStatus.map((item) => (
             <div
+              key={item}
               style={{
                 background: isSuccessfullLanding === item ? "#7cbb32" : "",
               }}

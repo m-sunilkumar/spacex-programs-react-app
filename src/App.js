@@ -10,7 +10,7 @@ const HomePage = lazy(() => import("./components/Home"));
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <section>
         <Router>
           <Suspense fallback={<div>Loading...</div>}>
@@ -25,7 +25,7 @@ function App() {
           </Suspense>
         </Router>
       </section>
-    </div>
+    </main>
   );
 }
 
