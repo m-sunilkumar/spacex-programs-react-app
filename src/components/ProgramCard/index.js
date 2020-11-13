@@ -18,7 +18,7 @@ const ProgramCard = (props) => {
         <div className="program-details">
           <span>Mission Ids:</span>{" "}
           {programDetails?.mission_id.length
-            ? programDetails.mission_id.map((id) => <span>{id}</span>)
+            ? programDetails.mission_id.map((id) => <span key={id}>{id}</span>)
             : "Not Available"}
         </div>
         <div className="program-details">

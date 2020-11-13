@@ -61,7 +61,7 @@ const HomePage = () => {
           ) : (
             !isLoading &&
             programs.map((item, index) => (
-              <div className="card-container" key={index}>
+              <div className="card-container" key={index + item.mission_name}>
                 <ProgramCard programDetails={item} />
               </div>
             ))
