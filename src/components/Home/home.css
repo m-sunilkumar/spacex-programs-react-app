@@ -26,9 +26,9 @@
   width: 70%;
   display: grid;
   /* Define Auto Row size if needed */
-  /* grid-auto-rows: 6.25rem; */
+  grid-auto-rows: 22rem;
   /*Define our columns */
-  grid-template-columns: repeat(auto-fit, minmax(12.75rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(12.75rem, 1fr));
   grid-gap: 1rem;
 }
 .right-launch-programs-container > h2 {
@@ -52,6 +52,6 @@
 }
 @media only screen and (min-width: 700px) and (max-width: 1024px) {
   .right-launch-programs-container {
-    grid-template-columns: repeat(auto-fit, minmax(14.75rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(14.75rem, 1fr));
   }
 }
