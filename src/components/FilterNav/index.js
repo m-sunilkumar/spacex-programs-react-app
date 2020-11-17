@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -46,7 +46,10 @@ const FilterNavigation = (props) => {
     }
     if (type === "launch") {
       setIsSuccessfullLaunch(val);
-      history.push({ pathname: "/programs", search: `?launch_success=${val}` });
+      history.push({
+        pathname: "/programs",
+        search: `?launch_success=${val}`,
+      });
     }
     if (type === "land") {
       setIsSuccessfullLanding(val);
@@ -55,14 +58,27 @@ const FilterNavigation = (props) => {
         search: `?landing_succcess=${val}`,
       });
     }
+  };
+
+  //reset all filter Data
+  const resetFilters = () => {
+    setFilterYear("");
+    setIsSuccessfullLaunch("");
+    setIsSuccessfullLanding("");
+  };
+
+  useEffect(() => {
+    setFilterYear(filterYear);
+    setIsSuccessfullLanding(isSuccessfullLanding);
+    setIsSuccessfullLaunch(isSuccessfullLaunch);
     const queryParams = {
       limit: 100,
-      launch_success: "true",
+      launch_success: isSuccessfullLaunch,
       land_success: isSuccessfullLanding,
       launch_year: filterYear,
     };
     fetchFilteredData(queryParams);
-  };
+  }, [filterYear, isSuccessfullLanding, isSuccessfullLaunch]);
 
   return (
     <section className="main-filter-container">
@@ -117,6 +133,9 @@ const FilterNavigation = (props) => {
           ))}
         </div>
       </div>
+      <button className="sub-filter-containers" onClick={() => resetFilters()}>
+        Clear All Filters
+      </button>
     </section>
   );
 };
