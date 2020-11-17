@@ -1,33 +1,36 @@
-// import express from 'express';
-// import fs from 'fs';
-// import path from 'path';
-// import React from 'react';
-// import ReactDOMServer from 'react-dom/server';
-// import Hello from './Hello.js';
+import express from "express";
+import fs from "fs";
+import path from "path";
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import Hello from "./Hello.js";
 
-// function handleRender(req, res) {
-//   // Renders our Hello component into an HTML string
-//   const html = ReactDOMServer.renderToString(<Hello />);
+function handleRender(req, res) {
+  // Renders our Hello component into an HTML string
+  const html = ReactDOMServer.renderToString(<Hello />);
 
-//   // Load contents of index.html
-//   fs.readFile('./index.html', 'utf8', function (err, data) {
-//     if (err) throw err;
+  // Load contents of index.html
+  fs.readFile("./index.html", "utf8", function (err, data) {
+    if (err) throw err;
 
-//     // Inserts the rendered React HTML into our main div
-//     const document = data.replace(/<div id="app"><\/div>/, `<div id="app">${html}</div>`);
+    // Inserts the rendered React HTML into our main div
+    const document = data.replace(
+      /<div id="app"><\/div>/,
+      `<div id="app">${html}</div>`
+    );
 
-//     // Sends the response back to the client
-//     res.send(document);
-//   });
-// }
+    // Sends the response back to the client
+    res.send(document);
+  });
+}
 
-// const app = express();
+const app = express();
 
-// // Serve built files with static files middleware
-// app.use('/build', express.static(path.join(__dirname, 'build')));
+// Serve built files with static files middleware
+app.use("/build", express.static(path.join(__dirname, "build")));
 
-// // Serve requests with our handleRender function
-// app.get('*', handleRender);
+// Serve requests with our handleRender function
+app.get("*", handleRender);
 
-// // Start server
-// app.listen(3000);
+// Start server
+app.listen(3000);
